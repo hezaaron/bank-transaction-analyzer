@@ -1,0 +1,25 @@
+package banktransaction.service;
+
+import banktransaction.model.SummaryStatistics;
+
+public class HtmlFormat implements Formatter {
+    
+    @Override
+    public String format(final SummaryStatistics summaryStatistics) {
+        String result = "<!doctype html>";
+        result += "<html lang='en'";
+        result += "<head><title>Bank Transaction Report</title></head>";
+        result += "<body>";
+        result += "<ul>";
+        result += "<li><strong>The sum is</strong>: " + summaryStatistics.getSum() + "</li>";
+        result += "<li><strong>The average is</strong>: " + summaryStatistics.getMin() + "</li>";
+        result += "<li><strong>The max is</strong>: " + summaryStatistics.getMax() + "</li>";
+        result += "<li><strong>The min is</strong>: " + summaryStatistics.getAverage() + "</li>";
+        result += "</ul>";
+        result += "</body>";
+        result += "</html>";
+        
+        return result;
+    }
+    
+}
