@@ -4,18 +4,57 @@
 package banktransaction;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+
+import banktransaction.model.BankTransactionList;
 import banktransaction.service.BankStatementAnalyzer;
+import banktransaction.service.BankStatementProcessor;
+import banktransaction.service.Exporter;
+import banktransaction.service.Formatter;
+import banktransaction.service.HtmlFormat;
 import banktransaction.util.BankStatementCSVParser;
 import banktransaction.util.BankStatementParser;
 
 public class App {
+    private static final BankStatementAnalyzer bankStatementAnalyzer = new BankStatementAnalyzer();
     
     public static void main(String[] args) throws IOException {
         final String fileName = args[0];
         final BankStatementParser bankStatementParser = new BankStatementCSVParser();
-        final BankStatementAnalyzer bankStatementAnalyzer = new BankStatementAnalyzer();
+        final BankTransactionList bankTransactionList = new BankTransactionList(fileName, bankStatementParser);
+        final BankStatementProcessor bankStatementProcessor= new BankStatementProcessor(bankTransactionList.getBankTransactions());
         
-        bankStatementAnalyzer.analyze(fileName, bankStatementParser);
+        bankStatementAnalyzer.analyze(bankTransactionList);
+        System.out.println();
+        
+        final HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        server.createContext("/", new WebHandler(bankStatementProcessor));
+        server.setExecutor(null);
+        server.start();
+        System.out.println("Server running at http://localhost:8080..." + "\nView the report on your web browser");
+    }
+    
+    static class WebHandler implements HttpHandler {
+        final BankStatementProcessor bankStatementProcessor;
+        
+        public WebHandler(final BankStatementProcessor bankStatementProcessor) {
+            this.bankStatementProcessor = bankStatementProcessor;
+        }
+        
+        public void handle(HttpExchange exchange) throws IOException {
+            final Formatter htmlFormat = new HtmlFormat();
+            final Exporter exporter = new Exporter(htmlFormat);
+            final String response = exporter.export(bankStatementAnalyzer.collectSummary(bankStatementProcessor));
+            
+            exchange.sendResponseHeaders(200, response.length());
+            OutputStream outputStream = exchange.getResponseBody();
+            outputStream.write(response.getBytes());
+            outputStream.close();
+        }
     }
 }
