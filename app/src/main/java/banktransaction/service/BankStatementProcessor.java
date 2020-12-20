@@ -14,41 +14,48 @@ public class BankStatementProcessor {
     }
     
     public double calculateTotalAmount() {
-        return bankTransactions.stream().map(BankTransaction::getAmount)
-                                        .mapToDouble(Double::doubleValue).sum();
+        return bankTransactions.stream()
+                               .mapToDouble(BankTransaction::getAmount)
+                               .sum();
     }
     
     public double calculateTotalInMonth(final Month month) {
-        return bankTransactions.stream().filter(transaction -> transaction.getDate().getMonth().equals(month))
-                                        .map(BankTransaction::getAmount)
-                                        .mapToDouble(Double::doubleValue).sum();
+        return bankTransactions.stream()
+                               .filter(transaction -> transaction.getDate().getMonth().equals(month))
+                               .mapToDouble(BankTransaction::getAmount)
+                               .sum();
     }
     
     public double calculateTotalForCategory(final String category) {
-        return bankTransactions.stream().filter(transaction -> transaction.getDescription().equals(category))
-                                        .map(BankTransaction::getAmount)
-                                        .mapToDouble(Double::doubleValue).sum();
+        return bankTransactions.stream()
+                               .filter(transaction -> transaction.getDescription().equals(category))
+                               .mapToDouble(BankTransaction::getAmount)
+                               .sum();
     }
     
     public double calculateMaxAmount() {
-        return bankTransactions.stream().map(BankTransaction::getAmount)
-                                        .mapToDouble(Double::doubleValue).max().getAsDouble();
+        return bankTransactions.stream()
+                               .mapToDouble(BankTransaction::getAmount)
+                               .max().getAsDouble();
     }
     
     public double calculateMinAmount() {
-        return bankTransactions.stream().map(BankTransaction::getAmount)
-                                        .mapToDouble(Double::doubleValue).min().getAsDouble();
+        return bankTransactions.stream()
+                               .mapToDouble(BankTransaction::getAmount)
+                               .min().getAsDouble();
     }
     
     public double calculateAverageAmount() {
-        return bankTransactions.stream().mapToDouble(BankTransaction::getAmount)
-                                        .average().getAsDouble();
+        return bankTransactions.stream()
+                               .mapToDouble(BankTransaction::getAmount)
+                               .average().getAsDouble();
     }
     
     public double calculateMaximumInMonth(final Month month) {
-        return bankTransactions.stream().filter(transaction -> transaction.getDate().getMonth().equals(month))
-                                        .map(BankTransaction::getAmount)
-                                        .mapToDouble(Double::doubleValue).max().getAsDouble();
+        return bankTransactions.stream()
+                               .filter(transaction -> transaction.getDate().getMonth().equals(month))
+                               .mapToDouble(BankTransaction::getAmount)
+                               .max().getAsDouble();
     }
     
     public List<BankTransaction> findTransactionsInMonthGreaterOrEqual(final Month month, final double amount) {

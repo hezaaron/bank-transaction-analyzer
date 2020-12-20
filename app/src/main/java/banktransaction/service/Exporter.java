@@ -9,7 +9,7 @@ public class Exporter {
         this.formatter = formatter;
     }
     
-    public void export(final SummaryStatistics summaryStatistics) {
-        formatter.format(summaryStatistics);
+    public String export(final SummaryStatistics summaryStatistics) {
+        return formatter.format(summaryStatistics);
     }
 }
