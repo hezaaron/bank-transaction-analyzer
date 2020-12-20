@@ -10,8 +10,8 @@ git clone https://github.com/hezaaron/bank-transaction-analyzer.git && cd bank-t
 ```
 
 This will install a copy of the project on your system.
+Requires java 8 or higher
 
-## Requires java 8 or higher
 ## Install dependencies and start the application
 
 **_cmd_**
