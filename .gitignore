@@ -1,3 +1,4 @@
 # Source : https://github.com/github/gitignore
 .project
 .classpath
+/bin/
