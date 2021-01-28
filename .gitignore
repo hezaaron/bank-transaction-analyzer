@@ -1,12 +1,3 @@
-# Ignore Gradle project-specific cache directory
-.gradle
-app/build/
-
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Eclipse
-/.classpath
-/.settings/
-/.project
-/bin/
+# Source : https://github.com/github/gitignore
+.project
+.classpath
