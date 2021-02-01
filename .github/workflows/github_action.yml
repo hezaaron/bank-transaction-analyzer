@@ -11,5 +11,5 @@ jobs:
         with:
           java-version: 11
       - run: chmod +x ./gradlew
-      - run: ./gradlew check
+      - run: ./gradlew :buildSrc:check
       - run: ./gradlew assemble
