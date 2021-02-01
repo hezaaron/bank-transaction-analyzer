@@ -12,5 +12,7 @@ jobs:
         with:
           java-version: 11
       - run: chmod +x ./gradlew
-      - run: ./gradlew check
-      - run: ./gradlew assemble
+      - run: ./gradlew :document-management:check
+      - run: ./gradlew :document-management:assemble
+      - run: ./gradlew :statement-analyzer:check
+      - run: ./gradlew :statement-analyzer:assemble
