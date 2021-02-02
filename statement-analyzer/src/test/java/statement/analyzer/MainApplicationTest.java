@@ -5,7 +5,7 @@ package statement.analyzer;
 
 import org.junit.jupiter.api.Test;
 
-public class StatementAnalyzerTest {
+public class MainApplicationTest {
     @Test
     public static void main(String[] args) {
         

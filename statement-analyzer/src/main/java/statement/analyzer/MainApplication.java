@@ -3,7 +3,7 @@
  */
 package statement.analyzer;
 
-public class StatementAnalyzer {
+public class MainApplication {
     public static void main(String[] args) {
         
     }

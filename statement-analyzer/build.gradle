@@ -18,4 +18,5 @@ application {
 
 dependencies {
     implementation project(':document-management')
+    compile 'com.google.code.gson:gson:2.8.6'
 }
