@@ -8,5 +8,6 @@
 
 plugins {
     // Apply the java-library plugin for API and implementation separation.
-    id 'bank.transaction.analyzer.java-library-conventions'
+    id 'bank.transaction.analyzer.java-common-conventions'
+    id 'java-library'
 }

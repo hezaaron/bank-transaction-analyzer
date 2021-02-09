@@ -3,8 +3,27 @@ name: CI-Quality
 on: pull_request
 
 jobs:
-  build:
+  build_dm:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: document-management
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - run: chmod +x ./gradlew
+      - run: ./gradlew tasks
+      - run: ./gradlew clean check
+      - run: ./gradlew assemble
+      
+  build_sr:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: statement-analyzer
 
     steps:
       - uses: actions/checkout@v1
