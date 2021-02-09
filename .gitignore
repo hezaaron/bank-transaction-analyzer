@@ -1,7 +1,6 @@
 # Source : https://github.com/github/gitignore
 .gitattributes
 .gradle
-settings.gradle
 .settings
 .project
 .classpath
