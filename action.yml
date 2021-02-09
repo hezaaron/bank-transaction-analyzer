@@ -1,9 +1,0 @@
-run:
-  using: "composite"
-  steps:
-    - run: chmod +x ./gradlew
-	  shell: bash
-    - run: ./gradlew test
-	  shell: bash
-    - run: ./gradlew assemble
-	  shell: bash

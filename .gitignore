@@ -1,4 +1,7 @@
 # Source : https://github.com/github/gitignore
+.gitattributes
+.gradle
+.settings
 .project
 .classpath
 /bin/
