@@ -23,7 +23,7 @@ public class Statement {
     public List<Transaction> getTrasactions(final String filePath) {
         importFile(filePath);
         final Document document = documentManagementSystem.contents().get(0);
-        final String transactions = document.getAttribute(Attribute.TRANSACTIONS);
+        final String transactions = document.getAttribute(Attribute.TRANSACTIONS.toString());
         final List<String> lines = Arrays.asList(transactions.split("\n"));
 
         return statementParser.parseLinesFrom(lines);

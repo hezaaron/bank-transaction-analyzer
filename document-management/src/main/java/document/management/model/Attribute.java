@@ -1,9 +1,16 @@
 package document.management.model;
 
-public class Attribute {
-    public static final String PATH = "path";
-    public static final String TRANSACTIONS = "transactions";
-    public static final String HEIGTH = "height";
-    public static final String WIDTH = "width";
-    public static final String TYPE = "type";
+public enum Attribute {
+    PATH("path"), TRANSACTIONS("transactions"), HEIGTH("height"),
+    WIDTH("width"), TYPE("type");
+    
+    private final String value;
+    
+    private Attribute(final String value) {
+        this.value = value;
+    }
+    
+    public String toString() {
+        return value;
+    }
 }
