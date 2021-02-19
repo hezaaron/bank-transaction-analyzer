@@ -18,10 +18,10 @@ public class ImageImporter implements Importer {
         final Map<String, String> attributes = new HashMap<>();
         final BufferedImage image = ImageIO.read(file);
         
-        attributes.put(Attribute.PATH, file.getPath());
-        attributes.put(Attribute.HEIGTH, String.valueOf(image.getHeight()));
-        attributes.put(Attribute.WIDTH, String.valueOf(image.getWidth()));
-        attributes.put(Attribute.TYPE, "IMAGE");
+        attributes.put(Attribute.PATH.toString(), file.getPath());
+        attributes.put(Attribute.HEIGTH.toString(), String.valueOf(image.getHeight()));
+        attributes.put(Attribute.WIDTH.toString(), String.valueOf(image.getWidth()));
+        attributes.put(Attribute.TYPE.toString(), "IMAGE");
         
         return new Document(attributes);
     }

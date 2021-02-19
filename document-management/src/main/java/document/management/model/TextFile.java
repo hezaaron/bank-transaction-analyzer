@@ -15,7 +15,7 @@ public class TextFile {
     
     public TextFile(final File file) throws IOException {
         attributes = new HashMap<>();
-        attributes.put(Attribute.PATH, file.getPath());
+        attributes.put(Attribute.PATH.toString(), file.getPath());
         lines = Files.lines(file.toPath()).collect(Collectors.toList());
     }
     

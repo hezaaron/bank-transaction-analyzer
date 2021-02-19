@@ -13,9 +13,9 @@ public class StatementImporter implements Importer {
     @Override
     public Document importFile(File file) throws IOException {
         final TextFile textFile = new TextFile(file);
-        textFile.addLines(0, String::isEmpty, Attribute.TRANSACTIONS);
+        textFile.addLines(0, String::isEmpty, Attribute.TRANSACTIONS.toString());
         final Map<String, String> attributes = textFile.getAttributes();
-        attributes.put(Attribute.TYPE, "BANKSTATEMENT");
+        attributes.put(Attribute.TYPE.toString(), "BANKSTATEMENT");
         return new Document(attributes);
     }
 

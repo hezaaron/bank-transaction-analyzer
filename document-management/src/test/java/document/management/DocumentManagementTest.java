@@ -26,7 +26,7 @@ public class DocumentManagementTest {
         
         final Document document = getDocument();
         
-        assertAttributeEquals(BANK_STATEMENT, Attribute.PATH, document);
+        assertAttributeEquals(BANK_STATEMENT, Attribute.PATH.toString(), document);
     }
     
     @Test
@@ -41,7 +41,7 @@ public class DocumentManagementTest {
                 + "02/02/2017,2000,Royalties\n"
                 + "02/02/2017,-4000,Rent\n"
                 + "03/02/2017,3000,Tesco\n"
-                + "05/02/2017,-30,Cinema", Attribute.TRANSACTIONS, document);
+                + "05/02/2017,-30,Cinema", Attribute.TRANSACTIONS.toString(), document);
     }
     
     @Test
@@ -50,8 +50,8 @@ public class DocumentManagementTest {
         
         final Document document = getDocument();
         
-        assertAttributeEquals("851", Attribute.WIDTH, document);
-        assertAttributeEquals("1037", Attribute.HEIGTH, document);
+        assertAttributeEquals("851", Attribute.WIDTH.toString(), document);
+        assertAttributeEquals("1037", Attribute.HEIGTH.toString(), document);
         assertTypeIs("IMAGE", document);
     }
     
@@ -62,7 +62,7 @@ public class DocumentManagementTest {
     }
     
     private void assertTypeIs(final String type, final Document document) {
-        assertAttributeEquals(type, Attribute.TYPE, document);
+        assertAttributeEquals(type, Attribute.TYPE.toString(), document);
     }
     
     private void assertAttributeEquals(final String expectedValue, final String attribute, final Document document) {
