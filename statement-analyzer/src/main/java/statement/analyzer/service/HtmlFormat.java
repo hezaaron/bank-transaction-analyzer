@@ -12,9 +12,9 @@ public class HtmlFormat implements Formatter {
         htmlDocument += "<body>";
         htmlDocument += "<ul>";
         htmlDocument += "<li><strong>The sum is</strong>: " + summaryStatistics.getSum() + "</li>";
-        htmlDocument += "<li><strong>The average is</strong>: " + summaryStatistics.getAverage() + "</li>";
         htmlDocument += "<li><strong>The max is</strong>: " + summaryStatistics.getMax() + "</li>";
         htmlDocument += "<li><strong>The min is</strong>: " + summaryStatistics.getMin() + "</li>";
+        htmlDocument += "<li><strong>The average is</strong>: " + summaryStatistics.getAverage() + "</li>";
         htmlDocument += "</ul>";
         htmlDocument += "</body>";
         htmlDocument += "</html>";

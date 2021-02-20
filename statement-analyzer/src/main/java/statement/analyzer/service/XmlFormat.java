@@ -16,12 +16,11 @@ public class XmlFormat implements Formatter {
         xmlDocument +=     "</title>";
         xmlDocument +=     "<statistics>";
         xmlDocument +=         "<sum>" + summaryStatistics.getSum() + "</sum>";
-        xmlDocument +=         "<average>" + summaryStatistics.getAverage() + "</average>";
         xmlDocument +=         "<max>" + summaryStatistics.getMax() + "</max>";
         xmlDocument +=         "<min>" + summaryStatistics.getMin() + "</min>";
+        xmlDocument +=         "<average>" + summaryStatistics.getAverage() + "</average>";
         xmlDocument +=     "</statistics>";
         xmlDocument += "</report>";
         return xmlDocument;
     }
-
 }
