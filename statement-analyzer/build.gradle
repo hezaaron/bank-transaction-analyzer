@@ -7,16 +7,33 @@
  */
 
 plugins {
-    // Apply the java-library plugin for API and implementation separation.
     id 'bank.transaction.analyzer.java-application-conventions'
+    //id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
 application {
     mainModule = 'statement.analyzer'
-    mainClass = 'statement.analyzer/StatementAnalyzer'
+    mainClass = 'statement.analyzer.MainApplication'
+}
+
+/*javafx {
+    version = '15'
+    modules = ['javafx.controls']
+}*/
+def currentOS = org.gradle.nativeplatform.platform.internal.DefaultNativePlatform.currentOperatingSystem;
+def platform
+if (currentOS.isWindows()) {
+     platform = 'win'
+} else if (currentOS.isLinux()) {
+     platform = 'linux'
+} else if (currentOS.isMacOsX()) {
+     platform = 'mac'
 }
 
 dependencies {
+    implementation "org.openjfx:javafx-base:15.0.1:${platform}"
+    implementation "org.openjfx:javafx-graphics:15.0.1:${platform}"
+    implementation "org.openjfx:javafx-controls:15.0.1:${platform}"
     implementation project(':document-management')
     compile 'com.google.code.gson:gson:2.8.6'
 }
